@@ -3,5 +3,6 @@ venv
 .aider*
 .env
 /logs
+output/
 output*pdf
 generated.pdf

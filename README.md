@@ -35,18 +35,24 @@ pip install pdfdancer-client-python
 ## Repository Layout
 
 Each example is a self-contained Python file with configuration constants at the
-top—edit the paths/text and run it directly:
+top—edit the paths/text and run it directly. The core walkthroughs map to the
+API docs structure:
 
-- `examples/basics/inspect_document.py` – print a quick document summary.
-- `examples/text/find_and_replace.py` – replace paragraphs that start with a phrase.
-- `examples/text/redact_phrases.py` – bulk-delete paragraphs matching forbidden phrases.
-- `examples/pages/reorder_pages.py` – move a page to a new index.
-- `examples/forms/fill_form_fields.py` – list and update AcroForm fields.
-- `examples/images/place_logo.py` – drop an image onto a page at fixed coordinates.
-- `examples/creation/create_blank_pdf.py` – generate a PDF from scratch with branded text and shapes.
+- `examples/quickstart/`
+  - `01_inspect_document.py` – print the project Showcase summary.
+  - `02_extract_text.py` – export all paragraphs into `output/quickstart/`.
+  - `03_duplicate_page.py` – clone the first page and save the result.
+- `examples/working-with-text/`
+  - `01_find_and_replace.py` – swap text that starts with a specific prefix.
+  - `02_redact_phrases.py` – delete any paragraph containing disallowed words.
+  - `03_highlight_matches.py` – recolor matching paragraphs.
+  - `04_move_text.py` – reposition a paragraph on the page.
+  - `05_change_font.py` – restyle the Showcase title.
+  - `06_add_watermark.py` – stamp DRAFT on every page.
 
-Logs produced by the SDK are written to `logs/` – useful for inspecting raw
-requests while you experiment.
+All scripts use `examples/Showcase.pdf` as the input document and write their
+outputs inside `output/<category>/`. Logs produced by the SDK are written to
+`logs/` – useful for inspecting raw requests while you experiment.
 
 ## Running Examples
 
@@ -55,9 +61,9 @@ requests while you experiment.
 3. Run the script with plain Python:
 
 ```bash
-python examples/basics/inspect_document.py
-python examples/text/find_and_replace.py
-python examples/creation/create_blank_pdf.py
+python examples/quickstart/01_inspect_document.py
+python examples/working-with-text/01_find_and_replace.py
+python examples/working-with-text/06_add_watermark.py
 ```
 
 ## Creating Your Own Examples

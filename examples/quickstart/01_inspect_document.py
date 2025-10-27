@@ -1,15 +1,17 @@
-"""Inspect the high-level structure of a PDF document."""
+"""Quickstart 01 — Inspect a PDF's high-level structure using Showcase.pdf."""
 
 from pathlib import Path
 from textwrap import shorten
 
 from pdfdancer import PDFDancer
 
-if __name__ == "__main__":
-    pdf_path = Path("examples/Showcase.pdf")
 
+SHOWCASE_PATH = Path("examples/Showcase.pdf")
+
+
+def run_example(pdf_path: Path = SHOWCASE_PATH) -> None:
     if not pdf_path.exists():
-        raise SystemExit(f"PDF file not found: {pdf_path}")
+        raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 
     with PDFDancer.open(pdf_path) as pdf:
         pages = pdf.pages()
@@ -22,7 +24,8 @@ if __name__ == "__main__":
         print(f"Total form fields: {len(pdf.select_form_fields())}")
 
         if not pages:
-            raise SystemExit("This PDF does not contain any pages.")
+            print("\nThis PDF does not contain any pages.")
+            return
 
         first_page = pages[0]
         print("\nFirst Page Details")
@@ -35,11 +38,20 @@ if __name__ == "__main__":
         sample = first_page.select_paragraphs()[:5]
         if not sample:
             print("\nNo paragraphs found on the first page.")
-        else:
-            print("\nSample paragraphs:")
-            for para in sample:
-                position = para.position
-                coord = "(?, ?)" if position is None else f"({position.x():.1f}, {position.y():.1f})"
-                raw_text = para.object_ref().get_text() or ""
-                text = shorten(raw_text.replace("\n", " "), width=80, placeholder="…") if raw_text else ""
-                print(f"- {coord} :: {text}")
+            return
+
+        print("\nSample paragraphs:")
+        for para in sample:
+            position = para.position
+            coord = "(?, ?)" if position is None else f"({position.x():.1f}, {position.y():.1f})"
+            raw_text = para.object_ref().get_text() or ""
+            text = (
+                shorten(raw_text.replace("\n", " "), width=80, placeholder="…")
+                if raw_text
+                else ""
+            )
+            print(f"- {coord} :: {text}")
+
+
+if __name__ == "__main__":
+    run_example()

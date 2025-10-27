@@ -11,17 +11,6 @@ jobs:
   test-examples:
     runs-on: ubuntu-latest
 
-    services:
-      pdfdancer:
-        image: pdfdancer/pdfdancer:latest
-        ports:
-          - 8080:8080
-        options: >-
-          --health-cmd "curl -f http://localhost:8080/health || exit 1"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - uses: actions/checkout@v4
 
@@ -36,23 +25,5 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run all examples
-        env:
-          PDFDANCER_BASE_URL: http://localhost:8080
-          PDFDANCER_API_TOKEN: test-token
         run: |
-          python examples/text/redact_phrases.py
-          python examples/text/find_and_replace.py
-          python examples/basics/inspect_document.py
-          python examples/forms/fill_form_fields.py
-          python examples/images/place_logo.py
-          python examples/pages/reorder_pages.py
-          python examples/creation/create_blank_pdf.py
-
-      - name: Upload generated PDFs
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: generated-pdfs
-          path: |
-            output_*.pdf
-            generated.pdf
+          find examples/ -name \*.py -exec python '{}' \;

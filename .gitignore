@@ -4,3 +4,4 @@ venv
 .env
 /logs
 output*pdf
+generated.pdf

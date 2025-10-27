@@ -29,4 +29,8 @@ jobs:
 
       - name: Run all examples
         run: |
-          find examples/ -name \*.py -exec python '{}' \;
+          set -e
+          for f in $(find examples/ -name '*.py'); do
+              echo "Running $f..."
+              python "$f"
+          done

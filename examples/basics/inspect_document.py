@@ -5,14 +5,13 @@ from textwrap import shorten
 
 from pdfdancer import PDFDancer
 
-PDF_PATH = Path("examples/Showcase.pdf")
-MAX_PARAGRAPHS = 5
-
 if __name__ == "__main__":
-    if not PDF_PATH.exists():
-        raise SystemExit(f"PDF file not found: {PDF_PATH}. Update PDF_PATH to point at a real document.")
+    pdf_path = Path("examples/Showcase.pdf")
 
-    with PDFDancer.open(PDF_PATH) as pdf:
+    if not pdf_path.exists():
+        raise SystemExit(f"PDF file not found: {pdf_path}")
+
+    with PDFDancer.open(pdf_path) as pdf:
         pages = pdf.pages()
         print("Document Summary")
         print("================")
@@ -33,7 +32,7 @@ if __name__ == "__main__":
         print(f"Images on page: {len(first_page.select_images())}")
         print(f"Form fields on page: {len(first_page.select_form_fields())}")
 
-        sample = first_page.select_paragraphs()[:MAX_PARAGRAPHS]
+        sample = first_page.select_paragraphs()[:5]
         if not sample:
             print("\nNo paragraphs found on the first page.")
         else:

@@ -4,32 +4,19 @@ from pathlib import Path
 
 from pdfdancer import PDFDancer
 
-PDF_PATH = Path("examples/Showcase.pdf")
-IMAGE_PATH = Path("examples/logo.png")
-OUTPUT_PATH = Path("output_with_logo.pdf")
-PAGE_INDEX = 0
-TARGET_X = 72.0
-TARGET_Y = 720.0
-
-
 if __name__ == "__main__":
-    if not PDF_PATH.exists():
-        raise SystemExit(f"PDF file not found: {PDF_PATH}. Update PDF_PATH to point at a real document.")
-    if not IMAGE_PATH.exists():
-        raise SystemExit(f"Image file not found: {IMAGE_PATH}. Update IMAGE_PATH to point at an existing asset.")
+    pdf_path = Path("examples/Showcase.pdf")
+    image_path = Path("examples/logo.png")
+    output_path = Path("output_with_logo.pdf")
 
-    with PDFDancer.open(PDF_PATH) as pdf:
-        page_count = len(pdf.pages())
-        if PAGE_INDEX < 0 or PAGE_INDEX >= page_count:
-            raise SystemExit(f"PAGE_INDEX must be between 0 and {page_count - 1}.")
+    if not pdf_path.exists():
+        raise SystemExit(f"PDF file not found: {pdf_path}")
+    if not image_path.exists():
+        raise SystemExit(f"Image file not found: {image_path}")
 
-        (
-            pdf.new_image()
-            .from_file(IMAGE_PATH)
-            .at(page=PAGE_INDEX, x=TARGET_X, y=TARGET_Y)
-            .add()
-        )
+    with PDFDancer.open(pdf_path) as pdf:
+        pdf.new_image().from_file(image_path).at(page=0, x=72.0, y=720.0).add()
 
-        OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        pdf.save(OUTPUT_PATH)
-        print(f"Placed {IMAGE_PATH} on page {PAGE_INDEX} at ({TARGET_X}, {TARGET_Y}). Saved to {OUTPUT_PATH}.")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        pdf.save(output_path)
+        print(f"Placed {image_path} on page 0 at (72.0, 720.0). Saved to {output_path}.")

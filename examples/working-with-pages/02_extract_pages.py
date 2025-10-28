@@ -1,15 +1,40 @@
-"""Split specific pages into a new PDF."""
+"""Working with Pages 02 — Extract the first N pages."""
 
 from pathlib import Path
 
 from pdfdancer import PDFDancer
 
-if __name__ == "__main__":
-    with PDFDancer.open(Path("examples/Showcase.pdf")) as pdf:
-        # Keep only pages 0-2, delete the rest
-        total = len(pdf.pages())
-        for i in range(total - 1, 2, -1):  # Delete backwards
-            pdf.page(i).delete()
 
-        pdf.save(Path("output_first_three.pdf"))
-        print(f"Extracted first 3 pages!")
+SHOWCASE_PATH = Path("examples/Showcase.pdf")
+OUTPUT_PATH = Path("output/working-with-pages/first_three_pages.pdf")
+PAGES_TO_KEEP = 3
+
+
+def run_example(
+    pdf_path: Path = SHOWCASE_PATH,
+    output_path: Path = OUTPUT_PATH,
+    pages_to_keep: int = PAGES_TO_KEEP,
+) -> None:
+    if not pdf_path.exists():
+        raise FileNotFoundError(f"PDF file not found: {pdf_path}")
+
+    if pages_to_keep <= 0:
+        raise ValueError("pages_to_keep must be positive")
+
+    with PDFDancer.open(pdf_path) as pdf:
+        total_pages = len(pdf.pages())
+        if pages_to_keep > total_pages:
+            raise ValueError(
+                f"Document only has {total_pages} pages; cannot keep {pages_to_keep}."
+            )
+
+        for index in range(total_pages - 1, pages_to_keep - 1, -1):
+            pdf.page(index).delete()
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        pdf.save(output_path)
+        print(f"Extracted first {pages_to_keep} pages into {output_path}.")
+
+
+if __name__ == "__main__":
+    run_example()

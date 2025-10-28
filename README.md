@@ -49,6 +49,20 @@ API docs structure:
   - `04_move_text.py` – reposition a paragraph on the page.
   - `05_change_font.py` – restyle the Showcase title.
   - `06_add_watermark.py` – stamp DRAFT on every page.
+- `examples/working-with-pages/`
+  - `01_reorder_pages.py` – move a page to a new index.
+  - `02_extract_pages.py` – keep the first N pages and discard the rest.
+  - `03_delete_pages.py` – delete a specific page.
+  - `04_add_blank_page.py` – append a blank Letter-sized page.
+- `examples/forms/`
+  - `01_list_fields.py` – enumerate fields, types, and values.
+  - `02_fill_fields.py` – populate fields by name.
+  - `03_check_boxes.py` – toggle checkbox widgets.
+  - `04_clear_fields.py` – reset fields to defaults.
+- `examples/working-with-images/`
+  - `01_list_images.py` – list image locations.
+  - `02_move_image.py` – reposition the first image on page 0.
+  - `03_delete_images.py` – remove images from a specific page.
 
 All scripts use `examples/Showcase.pdf` as the input document and write their
 outputs inside `output/<category>/`. Logs produced by the SDK are written to
@@ -63,7 +77,9 @@ outputs inside `output/<category>/`. Logs produced by the SDK are written to
 ```bash
 python examples/quickstart/01_inspect_document.py
 python examples/working-with-text/01_find_and_replace.py
-python examples/working-with-text/06_add_watermark.py
+python examples/working-with-pages/02_extract_pages.py
+python examples/forms/02_fill_fields.py
+python examples/working-with-images/02_move_image.py
 ```
 
 ## Creating Your Own Examples

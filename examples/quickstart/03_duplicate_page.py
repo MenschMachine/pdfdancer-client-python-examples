@@ -9,7 +9,10 @@ SHOWCASE_PATH = Path("examples/Showcase.pdf")
 OUTPUT_PATH = Path("output/quickstart/duplicated_showcase.pdf")
 
 
-def run_example(pdf_path: Path = SHOWCASE_PATH, output_path: Path = OUTPUT_PATH) -> None:
+def run_example(
+    pdf_path: Path = SHOWCASE_PATH,
+    output_path: Path = OUTPUT_PATH,
+) -> None:
     if not pdf_path.exists():
         raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 

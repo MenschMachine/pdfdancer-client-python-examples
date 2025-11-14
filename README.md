@@ -1,9 +1,12 @@
-# PDFDancer Client Python Examples
+# PDFDancer client Python examples
 
-This repository collects bite-sized examples that show what you can do with the
-[pdfdancer-client-python](https://pypi.org/project/pdfdancer-client-python/)
-package. Each script focuses on a single task—organised by use case—so you can
-copy, modify, and integrate the patterns into your own projects.
+![PDFDancer logo](media/logo-orange-60h.webp)
+
+Edit text in any real-world PDF—even ones you didn't create. These examples use
+the [`pdfdancer-client-python`](https://pypi.org/project/pdfdancer-client-python/)
+package to show how to build reliable, real-world PDF workflows without broken
+layouts or corrupted documents. Each script focuses on a single task, so you
+can copy, tweak, and drop the patterns into your own projects.
 
 ## Prerequisites
 
@@ -13,7 +16,7 @@ copy, modify, and integrate the patterns into your own projects.
 - A local PDF file you can experiment with (for the examples that open documents)
 - (Optional) A virtual environment to isolate dependencies
 
-## Getting Started
+## Getting started
 
 ```bash
 # clone this repository, then inside the project directory
@@ -32,7 +35,7 @@ Alternatively, install the client directly if you only need snippets:
 pip install pdfdancer-client-python
 ```
 
-## Repository Layout
+## Repository layout
 
 Each example is a self-contained Python file with configuration constants at the
 top—edit the paths/text and run it directly. The core walkthroughs map to the
@@ -68,7 +71,7 @@ All scripts use `examples/Showcase.pdf` as the input document and write their
 outputs inside `output/<category>/`. Logs produced by the SDK are written to
 `logs/` – useful for inspecting raw requests while you experiment.
 
-## Running Examples
+## Running examples
 
 1. Export `PDFDANCER_TOKEN` (and optionally `PDFDANCER_BASE_URL`).
 2. Open a script and adjust the constants near the top (paths, text, coordinates, etc.).
@@ -82,14 +85,14 @@ python examples/forms/02_fill_fields.py
 python examples/working-with-images/02_move_image.py
 ```
 
-## Creating Your Own Examples
+## Creating your own examples
 
 - Duplicate an existing script and focus it on a single workflow.
 - Keep the configuration at the top so others can tweak and run it quickly.
 - Explore `pdf.select_*()` APIs (paragraphs, images, form fields, paths, etc.) to
   discover other objects you can inspect or manipulate.
 
-## Helpful Links
+## Helpful links
 
 - PyPI: https://pypi.org/project/pdfdancer-client-python/
 - Issue tracker and feature requests: https://github.com/theflyingcodr/pdfdancer

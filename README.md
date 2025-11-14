@@ -95,5 +95,5 @@ python examples/working-with-images/02_move_image.py
 ## Helpful links
 
 - PyPI: https://pypi.org/project/pdfdancer-client-python/
-- Issue tracker and feature requests: https://github.com/theflyingcodr/pdfdancer
-- PDFDancer product overview: https://pdfdancer.com
+- Issue tracker and feature requests: https://github.com/MenschMachine/pdfdancer
+- PDFDancer product overview: https://www.pdfdancer.com

@@ -3,7 +3,7 @@ name: Daily Examples Test
 on:
   # Run daily at 2 AM UTC
   schedule:
-    - cron: '30 4 * * *'
+    - cron: '45 14 * * *'
 
   # Allow manual trigger
   workflow_dispatch:

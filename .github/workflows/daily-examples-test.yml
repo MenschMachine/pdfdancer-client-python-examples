@@ -1,19 +1,30 @@
 name: Daily Examples Test
 
 on:
-  # Run daily at 2 AM UTC
+  # Run daily at 2:45 PM UTC
   schedule:
     - cron: '45 14 * * *'
 
   # Allow manual trigger
   workflow_dispatch:
 
+  # Run on pull requests
+  pull_request:
+    branches: [ main ]
+
+  # Run on push to main
+  push:
+    branches: [ main ]
+
 jobs:
   test-examples:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      # Don't cancel all matrix jobs if one fails
+      fail-fast: false
       matrix:
-        python-version: ['3.13']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +39,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run all examples
+      - name: Run all examples (Unix)
+        if: runner.os != 'Windows'
         run: ./run.sh
+        env:
+          PDFDANCER_TOKEN: ${{ secrets.PDFDANCER_TOKEN }}
+          PDFDANCER_BASE_URL: ${{ secrets.PDFDANCER_BASE_URL }}
+
+      - name: Run all examples (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          set -e
+          for f in $(find examples/ -name '*.py'); do
+            echo "Running $f..."
+            python "$f"
+          done
+        env:
+          PDFDANCER_TOKEN: ${{ secrets.PDFDANCER_TOKEN }}
+          PDFDANCER_BASE_URL: ${{ secrets.PDFDANCER_BASE_URL }}
+
+      - name: Upload output artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: outputs-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: |
+            output/
+            logs/
+          retention-days: 7

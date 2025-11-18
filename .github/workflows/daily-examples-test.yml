@@ -46,7 +46,7 @@ jobs:
         run: ./run.sh
         env:
           PDFDANCER_TOKEN: ${{ secrets.PDFDANCER_TOKEN }}
-          PDFDANCER_BASE_URL: ${{ secrets.PDFDANCER_BASE_URL }}
+          PDFDANCER_BASE_URL: https://api-staging.pdfdancer.com
 
       - name: Run all examples (Windows)
         if: runner.os == 'Windows'
@@ -59,7 +59,7 @@ jobs:
           done
         env:
           PDFDANCER_TOKEN: ${{ secrets.PDFDANCER_TOKEN }}
-          PDFDANCER_BASE_URL: ${{ secrets.PDFDANCER_BASE_URL }}
+          PDFDANCER_BASE_URL: https://api-staging.pdfdancer.com
 
       - name: Upload output artifacts
         if: always()

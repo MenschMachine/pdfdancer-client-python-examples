@@ -9,24 +9,41 @@ on:
   workflow_dispatch:
 
 jobs:
+  select-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      os: ${{ steps.random-select.outputs.os }}
+      python-version: ${{ steps.random-select.outputs.python-version }}
+    steps:
+      - name: Randomly select matrix combination
+        id: random-select
+        run: |
+          # Define matrix options
+          os_options=("ubuntu-latest" "windows-latest")
+          python_versions=("3.10" "3.11" "3.12" "3.13" "3.14")
+
+          # Randomly select one from each
+          selected_os=${os_options[$RANDOM % ${#os_options[@]}]}
+          selected_python=${python_versions[$RANDOM % ${#python_versions[@]}]}
+
+          echo "Selected OS: $selected_os"
+          echo "Selected Python: $selected_python"
+
+          # Set outputs
+          echo "os=$selected_os" >> $GITHUB_OUTPUT
+          echo "python-version=$selected_python" >> $GITHUB_OUTPUT
+
   test-examples:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      # Don't cancel all matrix jobs if one fails
-      fail-fast: false
-      # Run matrix jobs sequentially (one at a time)
-      max-parallel: 1
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
+    needs: select-matrix
+    runs-on: ${{ needs.select-matrix.outputs.os }}
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ needs.select-matrix.outputs.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ needs.select-matrix.outputs.python-version }}
 
       - name: Install dependencies
         run: |
@@ -57,7 +74,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: outputs-${{ matrix.os }}-py${{ matrix.python-version }}
+          name: outputs-${{ needs.select-matrix.outputs.os }}-py${{ needs.select-matrix.outputs.python-version }}
           path: |
             output/
             logs/

@@ -23,8 +23,8 @@ def run_example(
             raise ValueError(f"No paragraphs found starting with '{paragraph_prefix}'.")
 
         line.edit().replace(
-            "This line was replaced!\nUpdated with PDFDancer",
-        ).font("Helvetica", 12.0).line_spacing(1.1).apply()
+            "This line was replaced!",
+        ).font("Helvetica", 12.0).apply()
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

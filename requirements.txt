@@ -1,1 +1,1 @@
-pdfdancer-client-python==0.2.27
+pdfdancer-client-python==0.2.29

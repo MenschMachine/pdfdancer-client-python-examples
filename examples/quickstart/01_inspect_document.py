@@ -30,7 +30,6 @@ def run_example(pdf_path: Path = SHOWCASE_PATH) -> None:
         first_page = pages[0]
         print("\nFirst Page Details")
         print("------------------")
-        print(f"Page index: {first_page.page_index}")
         print(f"Paragraphs on page: {len(first_page.select_paragraphs())}")
         print(f"Images on page: {len(first_page.select_images())}")
         print(f"Form fields on page: {len(first_page.select_form_fields())}")

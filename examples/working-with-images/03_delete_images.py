@@ -7,7 +7,7 @@ from pdfdancer import PDFDancer
 
 SHOWCASE_PATH = Path("examples/Showcase.pdf")
 OUTPUT_PATH = Path("output/working-with-images/no_images_page.pdf")
-TARGET_PAGE_INDEX = 2
+TARGET_PAGE_INDEX = 3
 
 
 def run_example(

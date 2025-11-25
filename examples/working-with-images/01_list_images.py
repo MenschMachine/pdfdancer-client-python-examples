@@ -33,7 +33,7 @@ def run_example(pdf_path: Path = SHOWCASE_PATH) -> None:
                 if position.x() is not None and position.y() is not None
                 else "(unknown coordinates)"
             )
-            print(f"- Page {position.page_index}: {coords} — {size}")
+            print(f"- Page {position.page_number}: {coords} — {size}")
 
 
 if __name__ == "__main__":

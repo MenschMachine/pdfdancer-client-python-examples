@@ -7,7 +7,7 @@ from pdfdancer import PDFDancer
 
 SHOWCASE_PATH = Path("examples/Showcase.pdf")
 OUTPUT_PATH = Path("output/working-with-pages/deleted_page.pdf")
-PAGE_INDEX = 3
+PAGE_INDEX = 4
 
 
 def run_example(

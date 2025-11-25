@@ -18,9 +18,9 @@ def run_example(
         raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 
     with PDFDancer.open(pdf_path) as pdf:
-        images = pdf.page(0).select_images()
+        images = pdf.page(1).select_images()
         if not images:
-            raise ValueError("No images found on page 0 to move.")
+            raise ValueError("No images found on page 1 to move.")
 
         image = images[0]
         image.move_to(**NEW_POSITION)
@@ -28,7 +28,7 @@ def run_example(
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)
         print(
-            f"Moved first image on page 0 to ({NEW_POSITION['x']}, {NEW_POSITION['y']}) and saved to {output_path}."
+            f"Moved first image on page 1 to ({NEW_POSITION['x']}, {NEW_POSITION['y']}) and saved to {output_path}."
         )
 
 

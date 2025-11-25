@@ -15,7 +15,7 @@ def run_example(
         paragraph_prefix: str = PARAGRAPH_PREFIX,
 ) -> None:
     with PDFDancer.open(pdf_path) as pdf:
-        matches = pdf.page(0).select_paragraphs_starting_with(paragraph_prefix)
+        matches = pdf.page(1).select_paragraphs_starting_with(paragraph_prefix)
         if not matches:
             raise ValueError(f"No paragraph found starting with '{paragraph_prefix}'.")
 

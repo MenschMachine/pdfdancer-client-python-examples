@@ -7,8 +7,8 @@ from pdfdancer import PDFDancer
 
 SHOWCASE_PATH = Path("examples/Showcase.pdf")
 OUTPUT_PATH = Path("output/working-with-pages/reordered.pdf")
-SOURCE_INDEX = 0
-DEST_INDEX = 2
+SOURCE_INDEX = 1
+DEST_INDEX = 3
 
 
 def run_example(

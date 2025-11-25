@@ -18,7 +18,7 @@ def run_example(
         raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 
     with PDFDancer.open(pdf_path) as pdf:
-        line = pdf.page(0).select_text_line_matching(paragraph_prefix)
+        line = pdf.page(1).select_text_line_matching(paragraph_prefix)
         if not line:
             raise ValueError(f"No paragraphs found starting with '{paragraph_prefix}'.")
 

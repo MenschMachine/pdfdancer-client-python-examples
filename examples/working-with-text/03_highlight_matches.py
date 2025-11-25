@@ -21,7 +21,7 @@ def run_example(
         raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 
     with PDFDancer.open(pdf_path) as pdf:
-        matches = pdf.page(0).select_paragraphs_matching(pattern)
+        matches = pdf.page(1).select_paragraphs_matching(pattern)
         if not matches:
             raise ValueError(f"No paragraphs matched pattern: {pattern}")
 

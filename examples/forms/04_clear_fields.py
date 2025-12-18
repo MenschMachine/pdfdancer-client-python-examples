@@ -20,6 +20,8 @@ def run_example(
         for field in fields:
             if field.object_type == ObjectType.CHECK_BOX:
                 field.edit().value("Off").apply()
+            elif field.object_type == ObjectType.BUTTON:
+                pass
             else:
                 field.edit().value("").apply()
 

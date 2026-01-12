@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from pdfdancer import PDFDancer, TemplateReplacement
+from pdfdancer import PDFDancer
 
 
 TEMPLATE_PATH = Path("examples/templates/MultiPageTemplate.pdf")
@@ -18,24 +18,24 @@ def run_example(
 
     with PDFDancer.open(pdf_path) as pdf:
         # Fill the cover page (page 1) with global replacements
-        pdf.apply_replacements([
-            TemplateReplacement("{{TITLE}}", "Annual Report 2026"),
-            TemplateReplacement("{{SUBTITLE}}", "Financial Overview"),
-            TemplateReplacement("{{AUTHOR}}", "Finance Department"),
-        ])
+        pdf.apply_replacements({
+            "{{TITLE}}": "Annual Report 2026",
+            "{{SUBTITLE}}": "Financial Overview",
+            "{{AUTHOR}}": "Finance Department",
+        })
 
         # Fill page-specific placeholders
         # Page 2 gets "Chapter 1" header
-        pdf.page(2).apply_replacements([
-            TemplateReplacement("{{HEADER}}", "Chapter 1: Introduction"),
-            TemplateReplacement("{{FOOTER}}", "Page 1 of 2"),
-        ])
+        pdf.page(2).apply_replacements({
+            "{{HEADER}}": "Chapter 1: Introduction",
+            "{{FOOTER}}": "Page 1 of 2",
+        })
 
         # Page 3 gets "Chapter 2" header
-        pdf.page(3).apply_replacements([
-            TemplateReplacement("{{HEADER}}", "Chapter 2: Analysis"),
-            TemplateReplacement("{{FOOTER}}", "Page 2 of 2"),
-        ])
+        pdf.page(3).apply_replacements({
+            "{{HEADER}}": "Chapter 2: Analysis",
+            "{{FOOTER}}": "Page 2 of 2",
+        })
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

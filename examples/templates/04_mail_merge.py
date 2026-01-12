@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from pdfdancer import PDFDancer, TemplateReplacement, ReflowPreset
+from pdfdancer import PDFDancer, ReflowPreset
 
 
 TEMPLATE_PATH = Path("examples/templates/Template.pdf")
@@ -45,12 +45,12 @@ def run_example(
     for i, recipient in enumerate(recipients, start=1):
         with PDFDancer.open(pdf_path) as pdf:
             pdf.apply_replacements(
-                [
-                    TemplateReplacement("{{RECIPIENT_NAME}}", recipient["name"]),
-                    TemplateReplacement("{{COURSE_NAME}}", recipient["course"]),
-                    TemplateReplacement("{{DATE}}", recipient["date"]),
-                    TemplateReplacement("{{INSTRUCTOR}}", recipient["instructor"]),
-                ],
+                {
+                    "{{RECIPIENT_NAME}}": recipient["name"],
+                    "{{COURSE_NAME}}": recipient["course"],
+                    "{{DATE}}": recipient["date"],
+                    "{{INSTRUCTOR}}": recipient["instructor"],
+                },
                 reflow_preset=ReflowPreset.BEST_EFFORT,
             )
 

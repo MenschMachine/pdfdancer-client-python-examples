@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from pdfdancer import PDFDancer, TemplateReplacement
+from pdfdancer import PDFDancer
 
 
 TEMPLATE_PATH = Path("examples/templates/Template.pdf")
@@ -17,12 +17,12 @@ def run_example(
         raise FileNotFoundError(f"PDF file not found: {pdf_path}")
 
     with PDFDancer.open(pdf_path) as pdf:
-        pdf.apply_replacements([
-            TemplateReplacement("{{RECIPIENT_NAME}}", "Jane Smith"),
-            TemplateReplacement("{{COURSE_NAME}}", "Introduction to Python"),
-            TemplateReplacement("{{DATE}}", "January 7, 2026"),
-            TemplateReplacement("{{INSTRUCTOR}}", "Dr. John Doe"),
-        ])
+        pdf.apply_replacements({
+            "{{RECIPIENT_NAME}}": "Jane Smith",
+            "{{COURSE_NAME}}": "Introduction to Python",
+            "{{DATE}}": "January 7, 2026",
+            "{{INSTRUCTOR}}": "Dr. John Doe",
+        })
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

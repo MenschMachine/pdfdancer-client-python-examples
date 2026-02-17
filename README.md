@@ -2,6 +2,8 @@
 
 ![PDFDancer logo](media/logo-silver-60h.webp)
 
+## PDF used to be read-only. We fixed that.
+
 Edit text in any real-world PDF. Even ones you didn't create. These examples use
 the [`pdfdancer-client-python`](https://pypi.org/project/pdfdancer-client-python/)
 package to show how to build reliable, real-world PDF workflows without broken
@@ -94,7 +96,7 @@ python examples/working-with-images/02_move_image.py
 
 ## Helpful links
 
-- API Docs: https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples
-- PyPI: https://pypi.org/project/pdfdancer-client-python/
-- Issue tracker and feature requests: https://github.com/MenschMachine/pdfdancer
-- PDFDancer product overview: https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples
+- [API documentation](https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
+- [Product overview](https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
+- [PyPI](https://pypi.org/project/pdfdancer-client-python/)
+- [Issue tracker](https://github.com/MenschMachine/pdfdancer)

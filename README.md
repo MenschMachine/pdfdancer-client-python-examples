@@ -1,8 +1,8 @@
 # PDFDancer client Python examples
 
-![PDFDancer logo](media/logo-orange-60h.webp)
+![PDFDancer logo](media/logo-silver-60h.webp)
 
-Edit text in any real-world PDF—even ones you didn't create. These examples use
+Edit text in any real-world PDF. Even ones you didn't create. These examples use
 the [`pdfdancer-client-python`](https://pypi.org/project/pdfdancer-client-python/)
 package to show how to build reliable, real-world PDF workflows without broken
 layouts or corrupted documents. Each script focuses on a single task, so you
@@ -94,7 +94,7 @@ python examples/working-with-images/02_move_image.py
 
 ## Helpful links
 
-- API Docs: https://docs.pdfdancer.com
+- API Docs: https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples
 - PyPI: https://pypi.org/project/pdfdancer-client-python/
 - Issue tracker and feature requests: https://github.com/MenschMachine/pdfdancer
-- PDFDancer product overview: https://www.pdfdancer.com
+- PDFDancer product overview: https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples

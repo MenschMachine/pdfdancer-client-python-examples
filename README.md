@@ -99,4 +99,6 @@ python examples/working-with-images/02_move_image.py
 - [API documentation](https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
 - [Product overview](https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
 - [PyPI](https://pypi.org/project/pdfdancer-client-python/)
+- [Changelog](https://www.pdfdancer.com/changelog/?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
+- [Status](https://status.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
 - [Issue tracker](https://github.com/MenschMachine/pdfdancer)

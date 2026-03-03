@@ -26,13 +26,7 @@ def run_example(pdf_path: Path = BASIC_PATHS_PATH) -> None:
             else:
                 coords = "(unknown coordinates)"
 
-            if position.bounding_rect:
-                rect = position.bounding_rect
-                size = f"{rect.width:.1f}×{rect.height:.1f}" if rect.width and rect.height else "unknown size"
-            else:
-                size = "unknown size"
-
-            print(f"- ID: {p.internal_id} at {coords} — {size}")
+            print(f"- ID: {p.internal_id} at {coords}")
 
 
 if __name__ == "__main__":

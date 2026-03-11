@@ -5,3 +5,5 @@ venv
 /logs
 output/
 /*.pdf
+/.last-message.txt
+/.propagate*md

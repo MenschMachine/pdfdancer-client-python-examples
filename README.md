@@ -64,14 +64,18 @@ API docs structure:
   - `02_fill_fields.py` – populate fields by name.
   - `03_check_boxes.py` – toggle checkbox widgets.
   - `04_clear_fields.py` – reset fields to defaults.
+- `examples/clipping/`
+  - `01_clear_clipping.py` – remove clipping so hidden image and path content becomes visible.
 - `examples/working-with-images/`
   - `01_list_images.py` – list image locations.
   - `02_move_image.py` – reposition the first image on page 0.
   - `03_delete_images.py` – remove images from a specific page.
 
-All scripts use `examples/Showcase.pdf` as the input document and write their
-outputs inside `output/<category>/`. Logs produced by the SDK are written to
-`logs/` – useful for inspecting raw requests while you experiment.
+Most scripts use `examples/Showcase.pdf` as the input document and write their
+outputs inside `output/<category>/`. The clipping example uses
+`examples/clipping/invisible-content-clipping-test.pdf`. Logs produced by the
+SDK are written to `logs/` - useful for inspecting raw requests while you
+experiment.
 
 ## Running examples
 
@@ -84,6 +88,7 @@ python examples/quickstart/01_inspect_document.py
 python examples/working-with-text/01_find_and_replace.py
 python examples/working-with-pages/02_extract_pages.py
 python examples/forms/02_fill_fields.py
+python examples/clipping/01_clear_clipping.py
 python examples/working-with-images/02_move_image.py
 ```
 

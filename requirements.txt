@@ -1,1 +1,1 @@
-git+https://github.com/MenschMachine/pdfdancer-client-python.git@2e92b4e1822e170848f210b3c90d679b59983ebc
+pdfdancer-client-python==0.3.14

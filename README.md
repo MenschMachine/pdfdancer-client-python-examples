@@ -57,7 +57,7 @@ API docs structure:
   - `01_clear_clipping.py` – remove clipping so hidden image and path content becomes visible.
 - `examples/working-with-images/`
   - `01_list_images.py` – list image locations.
-  - `02_move_image.py` – reposition the first image on page 0.
+  - `02_move_image.py` – reposition the first image on page 1.
   - `03_delete_images.py` – remove images from a specific page.
 
 Most scripts use `examples/Showcase.pdf` as the input document and write their

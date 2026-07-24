@@ -26,7 +26,7 @@ def run_example(
             raise ValueError(f"No checkbox found with name '{checkbox_name}'.")
 
         for field in matches:
-            field.edit().value(checked_value).apply()
+            field.set_value(checked_value)
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

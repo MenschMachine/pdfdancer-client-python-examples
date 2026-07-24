@@ -31,7 +31,7 @@ def run_example(
                 print(f"Skipping '{name}' — field not found")
                 continue
             for field in matches:
-                field.edit().value(value).apply()
+                field.set_value(value)
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

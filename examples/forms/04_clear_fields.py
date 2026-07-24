@@ -18,12 +18,12 @@ def run_example(
     with PDFDancer.open(pdf_path) as pdf:
         fields = pdf.select_form_fields()
         for field in fields:
-            if field.object_type == ObjectType.CHECK_BOX:
-                field.edit().value("Off").apply()
+            if field.object_type == ObjectType.CHECKBOX:
+                field.set_value("Off")
             elif field.object_type == ObjectType.BUTTON:
                 pass
             else:
-                field.edit().value("").apply()
+                field.set_value("")
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pdf.save(output_path)

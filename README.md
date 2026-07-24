@@ -43,17 +43,6 @@ Each example is a self-contained Python file with configuration constants at the
 top—edit the paths/text and run it directly. The core walkthroughs map to the
 API docs structure:
 
-- `examples/quickstart/`
-  - `01_inspect_document.py` – print the project Showcase summary.
-  - `02_extract_text.py` – export all paragraphs into `output/quickstart/`.
-  - `03_duplicate_page.py` – clone the first page and save the result.
-- `examples/working-with-text/`
-  - `01_find_and_replace.py` – swap text that starts with a specific prefix.
-  - `02_redact_phrases.py` – delete any paragraph containing disallowed words.
-  - `03_highlight_matches.py` – recolor matching paragraphs.
-  - `04_move_text.py` – reposition a paragraph on the page.
-  - `05_change_font.py` – restyle the Showcase title.
-  - `06_add_watermark.py` – stamp DRAFT on every page.
 - `examples/working-with-pages/`
   - `01_reorder_pages.py` – move a page to a new index.
   - `02_extract_pages.py` – keep the first N pages and discard the rest.
@@ -84,10 +73,8 @@ experiment.
 3. Run the script with plain Python:
 
 ```bash
-python examples/quickstart/01_inspect_document.py
-python examples/working-with-text/01_find_and_replace.py
 python examples/working-with-pages/02_extract_pages.py
-python examples/forms/02_fill_fields.py
+python examples/forms/01_list_fields.py
 python examples/clipping/01_clear_clipping.py
 python examples/working-with-images/02_move_image.py
 ```
@@ -107,3 +94,11 @@ python examples/working-with-images/02_move_image.py
 - [Changelog](https://www.pdfdancer.com/changelog/?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
 - [Status](https://status.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-python-examples)
 - [Issue tracker](https://github.com/MenschMachine/pdfdancer)
+
+The API-focused examples use behavior-based names: selector-based text
+replacement, deletion, insertion, and styling, plus chained image
+transformations and path color mutation.
+
+The `examples/capabilities/` directory additionally covers object creation,
+snapshots and coordinate selectors, font lookup/registration, image fill-region,
+path-group variants, and advanced text selectors.
